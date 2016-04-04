@@ -27,7 +27,7 @@ public class AreaCheckServlet extends HttpServlet {
         } catch (NumberFormatException e) {
         }
         PrintWriter out = resp.getWriter();
-        if (!validate(X,Y,R)){
+        if (!validate(X, Y, R)) {
             out.print("<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head>\n" +
@@ -36,7 +36,7 @@ public class AreaCheckServlet extends HttpServlet {
                     "</head>\n" +
                     "<body>\n" +
                     "    <p>Input error!</p>\n" +
-                    "    <p>Y must be [-5;5]. X="+XBuf+"</p>\n" +
+                    "    <p>Y must be [-5;5]. X=" + XBuf + "</p>\n" +
                     "</body>\n" +
                     "</html>");
             out.close();
@@ -52,21 +52,21 @@ public class AreaCheckServlet extends HttpServlet {
                 "<table align='center'>\n" +
                 "<tr>\n" +
                 "<td>X: </td>\n" +
-                "<td>"+X+"</td>\n" +
+                "<td>" + X + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
                 "<td>Y: </td>\n" +
-                "<td>"+Y+"</td>\n" +
+                "<td>" + Y + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
                 "<td>R: </td>\n" +
-                "<td>"+R+"</td>\n" +
+                "<td>" + R + "</td>\n" +
                 " <tr>\n" +
                 "<td>In area: </td>\n" +
-                "<td>" + (inFigure(X, Y, R)? "Yes" : "No")  +"</td>\n" +
+                "<td>" + (inFigure(X, Y, R) ? "Yes" : "No") + "</td>\n" +
                 "</tr>\n" +
-                "</table>\n"     +
-                "<p  align=\"center\"><a href=\"/lab7/main\">Go back</a></p>"+
+                "</table>\n" +
+                "<p  align=\"center\"><a href=\"/lab7/main\">Go back</a></p>" +
                 "</body>\n" +
                 "</html>");
         out.close();
@@ -79,6 +79,6 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     boolean validate(float X, float Y, float R) {
-        return (Y>=-5.0 && Y <= 5.0)&&(!Float.isNaN(X) && !Float.isNaN(Y) && !Float.isNaN(R) && R > 0 && Y <= 5 && Y >= -5);
+        return (Y >= -5.0 && Y <= 5.0) && (!Float.isNaN(X) && !Float.isNaN(Y) && !Float.isNaN(R) && R > 0 && Y <= 5 && Y >= -5);
     }
 }

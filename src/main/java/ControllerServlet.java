@@ -10,7 +10,10 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/check").forward(req, resp);
+        if ((req.getParameter("X") != null) && (req.getParameter("Y") != null) && (req.getParameter("R") != null)) {
+            req.getRequestDispatcher("/check").forward(req, resp);
+        }
+        req.getRequestDispatcher("/view").forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
