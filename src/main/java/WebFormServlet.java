@@ -95,11 +95,11 @@ import java.io.PrintWriter;
                     "<input type=\"text\" id=\"textY\" name=\"Y\" placeholder=\"-5..5\" onchange=\"validateForm()\" onkeydown=\"javascript:if(13==event.keyCode){return false;}\"  required>\n" +
             "</p>\n" +
             "<p>X:\n" +
-            "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"1\">\n" +
-            "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"2\">\n" +
-            "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"3\">\n" +
-            "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"4\">\n" +
-            "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"5\">\n" +
+            "<input class=\"txt1\" id=\"idX1\" type=\"submit\" name=\"X\" value=\"1\">\n" +
+            "<input class=\"txt1\" id=\"idX2\" type=\"submit\" name=\"X\" value=\"2\">\n" +
+            "<input class=\"txt1\" id=\"idX3\" type=\"submit\" name=\"X\" value=\"3\">\n" +
+            "<input class=\"txt1\" id=\"idX4\" type=\"submit\" name=\"X\" value=\"4\">\n" +
+            "<input class=\"txt1\" id=\"idX5\" type=\"submit\" name=\"X\" value=\"5\">\n" +
             "</p>\n" +
             "</form>\n" +
             "</div>\n" +
@@ -111,13 +111,21 @@ import java.io.PrintWriter;
             "</html>\n" +
             "<script>\n" +
             "function validateForm(){\n" +
-            "var _y=document.getElementById(\"textY\").value;\n" +
-            "_y=_y.replace(\",\",\".\");\n" +
-            "var _yvalid=!((y_val == \"\") || !(!isNaN(parseFloat(_y)) && isFinite(_y)) || (_y > 5) || (_y < -5));\n" +
+            "var _y = document.getElementById(\"textY\").value;\n" +
+            "_y = _y.replace(\",\",\".\");\n" +
+            "var _yvalid = !((_y == \"\") || !(!isNaN(parseFloat(_y)) && isFinite(_y)) || (_y > 5) || (_y < -5));\n" +
             "if (_yvalid) {\n" +
-            "document.getElementById(\"idX\").disabled=false;\n" +
+                    "document.getElementById(\"idX1\").disabled=false;\n" +
+                    "document.getElementById(\"idX2\").disabled=false;\n" +
+                    "document.getElementById(\"idX3\").disabled=false;\n" +
+                    "document.getElementById(\"idX4\").disabled=false;\n" +
+                    "document.getElementById(\"idX5\").disabled=false;\n" +
             "}else{\n" +
-            "document.getElementById(\"idX\").disabled=true;\n" +
+                    "document.getElementById(\"idX1\").disabled=true;\n" +
+                    "document.getElementById(\"idX2\").disabled=true;\n" +
+                    "document.getElementById(\"idX3\").disabled=true;\n" +
+                    "document.getElementById(\"idX4\").disabled=true;\n" +
+                    "document.getElementById(\"idX5\").disabled=true;\n" +
             "}\n" +
             "}\n" +
             "</script>\n");
