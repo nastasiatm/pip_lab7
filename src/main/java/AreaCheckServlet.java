@@ -31,12 +31,13 @@ public class AreaCheckServlet extends HttpServlet {
             out.print("<!DOCTYPE html>\n" +
                     "<html lang=\"en\">\n" +
                     "<head>\n" +
-                    "    <meta charset=\"UTF-8\">\n" +
-                    "    <title>Labwork №7</title>\n" +
+                    "<meta charset=\"UTF-8\">\n" +
+                    "<title>Labwork №7</title>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "    <p>Input error!</p>\n" +
-                    "    <p>Y must be [-5;5]. X=" + XBuf + "</p>\n" +
+                    "<p>Input error!</p>\n" +
+                    "<p>Y must be [-5;5]" + "</p>\n" +
+                    "<p  align=\"center\"><a href=\"/Lab7/main\">Go back</a></p>" +
                     "</body>\n" +
                     "</html>");
             out.close();
@@ -66,7 +67,7 @@ public class AreaCheckServlet extends HttpServlet {
                 "<td>" + (inFigure(X, Y, R) ? "Yes" : "No") + "</td>\n" +
                 "</tr>\n" +
                 "</table>\n" +
-                "<p  align=\"center\"><a href=\"/lab7/main\">Go back</a></p>" +
+                "<p  align=\"center\"><a href=\"/Lab7/main\">Go back</a></p>" +
                 "</body>\n" +
                 "</html>");
         out.close();
@@ -79,6 +80,6 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     boolean validate(float X, float Y, float R) {
-        return (Y >= -5.0 && Y <= 5.0) && (!Float.isNaN(X) && !Float.isNaN(Y) && !Float.isNaN(R) && R > 0 && Y <= 5 && Y >= -5);
+        return (Y >= -5.0 && Y <= 5.0) && (!Float.isNaN(X) && !Float.isNaN(Y) && !Float.isNaN(R) && Y <= 5 && Y >= -5);
     }
 }

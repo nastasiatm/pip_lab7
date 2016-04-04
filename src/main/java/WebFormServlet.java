@@ -85,14 +85,14 @@ import java.io.PrintWriter;
                     "<div class=\"inputs\">\n" +
                     "<form method=\"GET\" id=\"forma\" action=\"/Lab7/main\">\n" +
                     "<p>R:\n" +
-                    "<input type=\"radio\" name=\"R\" value=\"1\">1\n" +
-                    "<input type=\"radio\" name=\"R\" value=\"2\">2\n" +
-                    "<input type=\"radio\" name=\"R\" value=\"3\">3\n" +
-                    "<input type=\"radio\" name=\"R\" value=\"3\">4\n" +
-                    "<input type=\"radio\" name=\"R\" value=\"5\">5\n" +
+                    "<input type=\"radio\" name=\"R\" value=\"1\" required>1\n " +
+                    "<input type=\"radio\" name=\"R\" value=\"2\" required>2\n " +
+                    "<input type=\"radio\" name=\"R\" value=\"3\" required>3\n " +
+                    "<input type=\"radio\" name=\"R\" value=\"3\" required>4\n " +
+                    "<input type=\"radio\" name=\"R\" value=\"5\" required>5\n " +
                     "</p>\n" +
                     "<p>Y:\n" +
-                    "<input type=\"text\" id=\"textY\" name=\"Y\" placeholder=\"-5..5\"  required>\n" +
+                    "<input type=\"text\" id=\"textY\" name=\"Y\" placeholder=\"-5..5\" onchange=\"validateForm()\" onkeydown=\"javascript:if(13==event.keyCode){return false;}\"  required>\n" +
             "</p>\n" +
             "<p>X:\n" +
             "<input class=\"txt1\" id=\"idX\" type=\"submit\" name=\"X\" value=\"1\">\n" +
