@@ -10,15 +10,16 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if ((req.getParameter("X") != null) && (req.getParameter("Y") != null) && (req.getParameter("R") != null)) {
-            req.getRequestDispatcher("/check").forward(req, resp);
+        if ((req.getParameter("XSelector") != null) && (req.getParameter("YSelector") != null) && (req.getParameter("RSelector") != null)) {
+            resp.sendRedirect("/lab8/view.jsp");
         }
-        req.getRequestDispatcher("/view").forward(req, resp);
+        else {
+            req.getRequestDispatcher("check").forward(req, resp);
+        }
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/view");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("/lab8/view.jsp");
     }
 }
 

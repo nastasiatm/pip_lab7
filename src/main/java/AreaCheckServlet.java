@@ -2,93 +2,64 @@
  * Created by nasta_000 on 03.04.2016.
  */
 
+import tools.Result;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AreaCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        String X_s = req.getParameter("X").replace(',', '.');
-        String Y_s = req.getParameter("Y").replace(',', '.');
-        String R_s = req.getParameter("R").replace(',', '.');
-        float X = Float.NaN;
-        float Y = Float.NaN;
-        float R = Float.NaN;
-        try {
-            X = Float.parseFloat(X_s);
-            Y = Float.parseFloat(Y_s);
-            R = Float.parseFloat(R_s);
-        }
-        catch (NumberFormatException e) {}
+        HttpSession session = req.getSession(true);
+        List<Result> res = (ArrayList<Result>) session.getAttribute("results");
 
-        PrintWriter out = resp.getWriter();
-        if (!validate(X, Y, R)) {
-            out.print("<!DOCTYPE html>\n" +
-                        "<html lang=\"en\">\n" +
-                            "<head>\n" +
-                                "<meta charset=\"UTF-8\">\n" +
-                                "<title>Result</title>\n" +
-                            "</head>\n" +
-                            "<body align=\"center\">\n" +
-                                "<p>Input error!</p>\n" +
-                                "<p>\"Y\" must be [-5;5]. Your \"Y\" = " + Y_s + "</p>\n" +
-                                "<p  align=\"center\"><a href=\"/Lab7/main\">Go back</a></p>" +
-                            "</body>\n" +
-                        "</html>");
-            out.close();
-            return;
+        String XBuf = req.getParameter("XSelector").replace(',', '.');
+        String YBuf = req.getParameter("YSelector").replace(',', '.');
+        String RBuf = req.getParameter("RSelector").replace(',', '.');
+        double X = Double.NaN;
+        double Y = Double.NaN;
+        double R = Double.NaN;
+        boolean ok = true;
+        try {
+            X = Double.parseDouble(XBuf);
+            Y = Double.parseDouble(YBuf);
+            R = Double.parseDouble(RBuf);
+            if (!validate(X, Y, R)) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            session.setAttribute("success", "Something was wrong with your parameters! Please check them and try again! " +
+                    "\nRemember that they must be numeric and r must be more than 0!");
+            ok = false;
         }
-        out.print("<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                    "<head>\n" +
-                        "<meta charset=\"UTF-8\">\n" +
-                        "<title>Result</title>\n" +
-                        "<style>\n" +
-                            ".tbl1 tr td {\n" +
-                                "border: 1px solid black;\n" +
-                                "padding: 10px;\n" +
-                                "text-align: center;\n" +
-                                "border-collapse: separate;\n" +
-                            "}\n" +
-                        "</style>\n" +
-                    "</head>\n" +
-                    "<body>\n" +
-                        "<table class=\"tbl1\" align= \"center\">\n" +
-                            "<tr>\n" +
-                                "<td>X: </td>\n" +
-                                "<td>" + X + "</td>\n" +
-                            "</tr>\n" +
-                            "<tr>\n" +
-                                "<td>Y: </td>\n" +
-                                "<td>" + Y + "</td>\n" +
-                            "</tr>\n" +
-                            "<tr>\n" +
-                                "<td>R: </td>\n" +
-                                "<td>" + R + "</td>\n" +
-                                "<tr>\n" +
-                                "<td>In area: </td>\n" +
-                                "<td>" + (inArea(X, Y, R) ? "Yes" : "No") + "</td>\n" +
-                            "</tr>\n" +
-                        "</table>\n" +
-                "<p  align=\"center\"><a href=\"/Lab7/main\">Go back</a></p>" +
-                "</body>\n" +
-                "</html>");
-        out.close();
+        if (ok) {
+            session.setAttribute("success", "Your request was successful! See table for results!");
+            if (res == null) {
+                res = new ArrayList<Result>();
+                res.add(new Result(X, Y, R, inFigure(X, Y, R)));
+                session.setAttribute("results", res);
+            } else {
+                res.add(new Result(X, Y, R, inFigure(X, Y, R)));
+            }
+        }
+        resp.sendRedirect("/lab8/view.jsp");
     }
 
-    boolean inArea(float X, float Y, float R) {
+    boolean inFigure(double X, double Y, double R) {
         return (((X <= 0) && (X >= -R) && (Y <= 0) && (Y >= -R / 2)) ||
                 ((X >= 0) && (X <= R) && (Y >= -R) && (Y <= 0) && (X * X + Y * Y) <= R * R / 4) ||
                 ((X >= 0) && (X <= R) && (Y >= 0) && X <= R && (Y <= -X + R)));
     }
 
-    boolean validate(float X, float Y, float R) {
-        return (Y >= -5.0 && Y <= 5.0) && (!Float.isNaN(X) && !Float.isNaN(Y) && !Float.isNaN(R) && Y <= 5 && Y >= -5);
+    boolean validate(double X, double Y, double R) {
+        return (Y >= -5.0 && Y <= 5.0) && (R > 0) && (!Double.isNaN(X) && !Double.isNaN(Y) && !Double.isNaN(R) && Y <= 5 && Y >= -5);
     }
 }
