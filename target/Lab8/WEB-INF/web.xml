@@ -3,8 +3,8 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Lab7</display-name>
-  <description>Trofimova Anastasia 218</description>
+  <display-name>Lab8</display-name>
+  <description>Trofimova Anastasia 228</description>
 
   <servlet>
     <servlet-name>mainServlet</servlet-name>
