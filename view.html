@@ -23,33 +23,32 @@
     </header>
     <div class="content">
         <div class="inputs">
-            <form method="GET" action="/lab8/main">
-                <p>X value:
-                    <input type="checkbox" name="XSelector" class= "chb" value="-2" checked>-2
-                    <input type="checkbox" name="XSelector" class= "chb" value="-1.5">-1.5
-                    <input type="checkbox" name="XSelector" class= "chb" value="-1">-1
-                    <input type="checkbox" name="XSelector" class= "chb" value="-0.5">-0.5
-                    <input type="checkbox" name="XSelector" class= "chb" value="0">0
-                    <input type="checkbox" name="XSelector" class= "chb" value="0.5">0.5
-                    <input type="checkbox" name="XSelector" class= "chb" value="1">1
-                    <input type="checkbox" name="XSelector" class= "chb" value="1.5">1.5
-                    <input type="checkbox" name="XSelector" class= "chb" value="2">2
-                <p>Y value {-3..5}:
-                    <input type="text" id="textY" name="YSelector" placeholder="-3..5" onchange="validateForm()" onkeydown="javascript:if(13==event.keyCode){return false;}" required>
+            <form method="GET" action="/Lab8/main">
+                <p id="rad">Select X:
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="1">1</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="2">2</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="3">3</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="4">4</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="5">5</button>
+                </p>
+                <p>Y value {-5..5}:
+                    <input type="text" id="textY" name="Y" placeholder="-5..5" onchange="validateForm()" onkeydown="javascript:if(13==event.keyCode){return false;}" required>
                 </p>
                 <p id="rad">Select R:
-                    <button type="button" name="RSelector" class="radBtn" onclick="rSelected(this)" value="1">1</button>
-                    <button type="button" name="RSelector" class="radBtn" onclick="rSelected(this)" value="2">2</button>
-                    <button type="button" name="RSelector" class="radBtn" onclick="rSelected(this)" value="3">3</button>
-                    <button type="button" name="RSelector" class="radBtn" onclick="rSelected(this)" value="4">4</button>
-                    <button type="button" name="RSelector" class="radBtn" onclick="rSelected(this)" value="5">5</button>
+                    <select size="5" submit>
+                        <option value="1" name="RSelector" class="radBtn">1</option>
+                        <option value="1.5" name="RSelector" class="radBtn">1.5</option>
+                        <option value="2" name="RSelector" class="radBtn">2</option>
+                        <option value="2.5" name="RSelector" class="radBtn">2.5</option>
+                        <option value="3" name="RSelector" class="radBtn">3</option>
+                    </select>
                 </p>
                 <input type="hidden" id="hiddenR" name="RSelector"></input>
                 <button type="submit" id="ok" disabled="true">OK</button>
             </form>
         </div>
         <div class="area">
-            <p><img name = 'img' src = 'http://i.imgur.com/NYTtEHF.png' id="graph" style="position: relative;" /></p>
+            <p><img name = 'img' src = 'http://savepic.ru/9612611.png' id="graph" style="position: relative;" /></p>
         </div>
         <table border="1" style="border-color: lightsteelblue">
             <caption>tools.Result table</caption>
@@ -143,12 +142,22 @@
                     alert("Set R first!");
                     return;
                 }
-                window.location = "../lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
+                window.location = "../Lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
             }
         </script>
 <style>
-    .content{
-    margin-top: 50px;
+    #head {
+    font: 150% serif;
+    background: #F1AD2E;
+    text-align: center;
+    }
+    #head:hover {
+    color: #B83129;
+    }
+    .radius {
+    border: 1px solid black;
+    padding: 15px;
+    margin-bottom: 10px;
     }
     .inputs{
     width: 50%;
@@ -166,29 +175,11 @@
     text-align: center;
     }
     .area::before{
-    content: "Область:";
+    content: \Graph:\;
     display: block;
     }
-    header>p{
-    font-family: sans-serif;
-    width: 300px;
-    padding: 5px;
-    text-align: center;
-    margin: auto;
-    color: #004dff;
-
-    }
     form{
-    font-family: sans-serif;
-    }
-    header>p:first-child{
-    font-size: 25px !important;
-    }
-    header>p:nth-child(2){
-    font-size: 20px;
-    }
-    header>p:nth-child(3){
-    font-size: 18px;
+    font-family: serif;
     }
     form>p>input,button,select{
     margin-left: 10px;

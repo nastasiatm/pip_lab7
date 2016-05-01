@@ -50,7 +50,7 @@ public class AreaCheckServlet extends HttpServlet {
                 res.add(new Result(X, Y, R, inFigure(X, Y, R)));
             }
         }
-        resp.sendRedirect("/lab8/view.jsp");
+        resp.sendRedirect("/Lab8/view.jsp");
     }
 
     boolean inFigure(double X, double Y, double R) {

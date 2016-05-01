@@ -60,6 +60,6 @@ $(document).ready(function () {
             alert("Set R first!");
             return;
         }
-        window.location = "../lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
+        window.location = "../Lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
     }
 });

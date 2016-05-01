@@ -1,5 +1,5 @@
 /**
- * Created by nasta_000 on 03.04.2016.
+ * Created by nasta_000 on 01.05.2016.
  */
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if ((req.getParameter("XSelector") != null) && (req.getParameter("YSelector") != null) && (req.getParameter("RSelector") != null)) {
-            resp.sendRedirect("/lab8/view.jsp");
+        if ((req.getParameter("XSelector") == null) || (req.getParameter("YSelector") == null) || (req.getParameter("RSelector") == null)) {
+            resp.sendRedirect("/Lab8/view.jsp");
         }
         else {
             req.getRequestDispatcher("check").forward(req, resp);
@@ -19,7 +19,7 @@ public class ControllerServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/lab8/view.jsp");
+        resp.sendRedirect("/Lab8/view.jsp");
     }
 }
 

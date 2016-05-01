@@ -2,70 +2,62 @@
 <%@ page import="tools.Result" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
-    .content{
-        margin-top: 50px;
-    }
-    .inputs{
+      #head {
+        font: 150% serif;
+        background: #F1AD2E;
+        text-align: center;
+      }
+        #head:hover {
+        color: #B83129;
+        }
+        .radius {
+        border: 1px solid black;
+        padding: 15px;
+        margin-bottom: 10px;
+        }
+        .inputs{
         width: 50%;
         float: left;
         padding-top: 50px;
-    }
-    .wrapper{
+        }
+        .wrapper{
         margin: auto;
         width: 980px;
-    }
-    .area{
+        }
+        .area{
         width: 50%;
         float: right;
         padding: auto;
         text-align: center;
-    }
-    .area::before{
-        content: "Area:";
+        }
+        .area::before{
+        content: \Graph:\;
         display: block;
-    }
-    header>p{
-        font-family: sans-serif;
-        width: 300px;
-        padding: 5px;
-        text-align: center;
-        margin: auto;
-        color: #004dff;
-
-    }
-    form{
-        font-family: sans-serif;
-    }
-    header>p:first-child{
-        font-size: 25px !important;
-    }
-    header>p:nth-child(2){
-        font-size: 20px;
-    }
-    header>p:nth-child(3){
-        font-size: 18px;
-    }
-    form>p>input,button,select{
+        }
+        form{
+        font-family: serif;
+        }
+        form>p>input,button,select{
         margin-left: 10px;
-    }
-    form>p>button{
+        }
+        form>p>button{
         width: 30px;
         height: 30px;
-    }
+    	}
 </style>
 <html>
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <title>ПИП Лаба №8</title>
+    <title>Labwork №8</title>
 </head>
 <body>
 <script>
     <%@include file="scripts.js"%>
 </script>
 <div class="wrapper">
-    <header>
-        <p>Трофимлва Анастасия Михайловна</p>
+    <header id="head" align="center" style="border-radius: 65px 0px" class="radius">
+        <p>Трофимова Анастасия Михайловна</p>
         <p>Группа P3202</p>
         <p>Вариант 228</p>
     </header>
@@ -76,13 +68,13 @@
             <%}%>
         </strong></p>
         <div class="inputs">
-            <form method="GET" action="/lab8/main">
+            <form method="GET" action="/Lab8/main">
             <p id="rad">Select X:
-                                <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="1">1</button>
-                                <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="2">2</button>
-                                <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="3">3</button>
-                                <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="4">4</button>
-                                <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="5">5</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="1">1</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="2">2</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="3">3</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="4">4</button>
+                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="5">5</button>
             </p>
             <p>Y value {-5..5}:
                     <input type="text" id="textY" name="Y" placeholder="-5..5" onchange="validateForm()" onkeydown="javascript:if(13==event.keyCode){return false;}" required>
