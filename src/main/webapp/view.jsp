@@ -96,7 +96,7 @@
                 y = 100 - y;
             else
                 y = -y + 100;
-            var rad = parseFloat(document.getElementById("rad").value);
+            var rad = parseFloat(document.getElementsByClassName("rad").value);
 
             if (!isNaN(rad)) {
                 var k = rad * 1.25;
@@ -137,12 +137,12 @@
                                 onkeydown="javascript:if(13==event.keyCode){return false;}" required>
             </p>
             <p>Select R:
-                <select size="3">
-                    <option value="1" name="RSelector" id="rad" class="radSel" selected>1</option>
-                    <option value="1.5" name="RSelector" id="rad" class="radSel">1.5</option>
-                    <option value="2" name="RSelector" id="rad" class="radSel">2</option>
-                    <option value="2.5" name="RSelector" id="rad" class="radSel">2.5</option>
-                    <option value="3" name="RSelector" id="rad" class="radSel">3</option>
+                <select size="3" id="rad">
+                    <option value="1" name="RSelector" class="radSel" selected>1</option>
+                    <option value="1.5" name="RSelector" class="radSel">1.5</option>
+                    <option value="2" name="RSelector" class="radSel">2</option>
+                    <option value="2.5" name="RSelector" class="radSel">2.5</option>
+                    <option value="3" name="RSelector" class="radSel">3</option>
                 </select>
             </p>
             <input type="hidden" id="hiddenX" name="XSelector"></input>
