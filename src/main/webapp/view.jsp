@@ -119,8 +119,8 @@
     </header>
     <div class="content">
         <p><strong><%
-            if (session.getAttribute("success") != null) {%>
-            <%=session.getAttribute("success")%>
+            if (req.getAttribute("result") != null) {%>
+            <%=req.getAttribute("result")%>
             <%}%>
         </strong></p>
         <div class="inputs">
