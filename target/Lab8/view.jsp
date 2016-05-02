@@ -88,10 +88,6 @@
         validateForm();
     }
 
-    function rSelected(btn) {
-            document.getElementById("hiddenR").value = btn.value;
-        }
-
     $(document).ready(function () {
         document.getElementById("graph").onclick = function (e) {
             var x = e.offsetX == undefined ? e.layerX : e.offsetX - 100;
@@ -100,7 +96,7 @@
                 y = 100 - y;
             else
                 y = -y + 100;
-            var rad = parseFloat(document.getElementsById("hiddenR").value);
+            var rad = parseFloat(document.getElementById("rad").value);
 
             if (!isNaN(rad)) {
                 var k = rad * 1.25;
@@ -111,7 +107,7 @@
                 alert("Error! Set R!");
                 return;
             }
-            window.location = "../lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
+            window.location = "../Lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
         }
     });
 </script>
@@ -142,15 +138,14 @@
             </p>
             <p>Select R:
                 <select size="3" id="rad" name="RSelector">
-                    <option value="1"  selected class="radSel" onclick="rSelected(this)">1</option>
-                    <option value="1.5" class="radSel" onclick="rSelected(this)">1.5</option>
-                    <option value="2" class="radSel" onclick="rSelected(this)">2</option>
-                    <option value="2.5" class="radSel" onclick="rSelected(this)">2.5</option>
-                    <option value="3" class="radSel" onclick="rSelected(this)">3</option>
+                    <option value="1"  selected class="radSel">1</option>
+                    <option value="1.5" class="radSel">1.5</option>
+                    <option value="2" class="radSel">2</option>
+                    <option value="2.5" class="radSel">2.5</option>
+                    <option value="3" class="radSel">3</option>
                 </select>
             </p>
             <input type="hidden" id="hiddenX" name="XSelector"></input>
-            <input type="hidden" id="hiddenR" name="RSelector"></input>
             <button type="submit" id="ok" disabled="true">Ok!</button>
             </form>
         </div>
