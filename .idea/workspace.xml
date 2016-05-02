@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="610cdef4-ca8e-4a4f-87f5-46177a263087" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/AreaCheckServlet.java" afterPath="$PROJECT_DIR$/src/main/java/AreaCheckServlet.java" />
     </list>
     <ignored path="Lab7.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="AreaCheckServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/AreaCheckServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.9018265">
-              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.4178082">
+              <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -89,8 +89,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ControllerServlet.java" />
         <option value="$PROJECT_DIR$/view.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/scripts.js" />
-        <option value="$PROJECT_DIR$/src/main/java/AreaCheckServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/view.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/AreaCheckServlet.java" />
       </list>
     </option>
   </component>
@@ -1031,8 +1031,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AreaCheckServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9018265">
-          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.4178082">
+          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />

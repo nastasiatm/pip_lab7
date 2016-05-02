@@ -69,9 +69,9 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     boolean inFigure(double X, double Y, double R) {
-        return (((X <= 0) && (X >= -R) && (Y <= 0) && (Y >= -R / 2)) ||
-                ((X >= 0) && (X <= R) && (Y >= -R) && (Y <= 0) && (X * X + Y * Y) <= R * R / 4) ||
-                ((X >= 0) && (X <= R) && (Y >= 0) && X <= R && (Y <= -X + R)));
+        return (((X <= R) && (X >= 0) && (Y <= 0) && (Y >= -R)) ||
+                ((X >= 0) && (X <= R/2) && (Y <= R/2) && (Y >= 0) && (X * X + Y * Y) <= R * R / 4) ||
+                ((X <= 0) && (X >= -R/2) && (Y >= -X - R/2)));
     }
 
     boolean validate(double X, double Y, double R) {
