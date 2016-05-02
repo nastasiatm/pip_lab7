@@ -7,43 +7,43 @@
         background: #F1AD2E;
         text-align: center;
       }
-        #head:hover {
+      #head:hover {
         color: #B83129;
-        }
-        .radius {
+      }
+      .radius {
         border: 1px solid black;
         padding: 15px;
         margin-bottom: 10px;
-        }
-        .inputs{
+      }
+      .inputs{
         width: 50%;
         float: left;
         padding-top: 50px;
-        }
-        .wrapper{
+      }
+      .wrapper{
         margin: auto;
         width: 980px;
-        }
-        .area{
+      }
+      .area{
         width: 50%;
         float: right;
         padding: auto;
         text-align: center;
-        }
-        .area::before{
+      }
+      .area::before{
         content: \Graph:\;
         display: block;
-        }
-        form{
+      }
+      form{
         font-family: serif;
-        }
-        form>p>input,button,select{
+      }
+      form>p>input,button,select{
         margin-left: 10px;
-        }
-        form>p>button{
+      }
+      form>p>button{
         width: 30px;
         height: 30px;
-    	}
+      }
 </style>
 <html>
 <head>
@@ -68,12 +68,12 @@
         } else {
             document.getElementById("ok").disabled = true;
             if (!y_valid) {
-                document.getElementById("textY").style.borderColor = "#B83129";
+                document.getElementById("textY").style.borderColor = "#F1AD2E";
             }
             if (!x_valid) {
                 document.getElementById("xSel").style.borderStyle = "solid";
                 document.getElementById("xSel").style.borderWidth = "1px";
-                document.getElementById("xSel").style.borderColor = "#B83129";
+                document.getElementById("xSel").style.borderColor = "#F1AD2E";
             }
         }
     }
@@ -84,7 +84,7 @@
         for (var i = 0; i < elems.length; i++) {
             elems[i].style.backgroundColor = "";
         }
-        btn.style.backgroundColor = "#4CAF50";
+        btn.style.backgroundColor = "#FFCC00";
         validateForm();
     }
 
@@ -145,7 +145,7 @@
             </form>
         </div>
         <div class="area">
-            <p><img name='img' src='http://savepic.ru/9612611.png' id="graph" style="position: relative;"/></p>
+            <p><img name='img' src='http://savepic.ru/9582599.png' id="graph" style="position: relative;"/></p>
         </div>
         <table border="1" style="border-color: blue">
             <caption>Result table</caption>
