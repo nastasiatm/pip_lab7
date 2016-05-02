@@ -156,7 +156,7 @@
                 <td>Contain</td>
             </tr>
             <%
-                ArrayList<Result> res = (ArrayList) session.getAttribute("results");
+                ArrayList<Result> res = (ArrayList)application.getAttribute("res");
                 if (res != null) {
                     for (int i = 0; i < res.size(); i++) {
             %>
