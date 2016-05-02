@@ -137,12 +137,12 @@
                                 onkeydown="javascript:if(13==event.keyCode){return false;}" required>
             </p>
             <p>Select R:
-                <select size="3" id="rad">
-                    <option value="1" name="RSelector" class="radSel" selected>1</option>
-                    <option value="1.5" name="RSelector" class="radSel">1.5</option>
-                    <option value="2" name="RSelector" class="radSel">2</option>
-                    <option value="2.5" name="RSelector" class="radSel">2.5</option>
-                    <option value="3" name="RSelector" class="radSel">3</option>
+                <select size="3" id="rad" name="RSelector">
+                    <option value="1" selected>1</option>
+                    <option value="1.5" class="radSel">1.5</option>
+                    <option value="2" class="radSel">2</option>
+                    <option value="2.5" class="radSel">2.5</option>
+                    <option value="3" class="radSel">3</option>
                 </select>
             </p>
             <input type="hidden" id="hiddenX" name="XSelector"></input>
