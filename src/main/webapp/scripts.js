@@ -9,31 +9,31 @@ $(document).ready(function () {
 function validateForm() {
     var y_val = document.getElementById("textY").value;
     y_val = y_val.replace(",", ".");
-    var r_val = document.getElementById("hiddenR").value;
+    var x_val = document.getElementById("hiddenX").value;
     var y_valid = !((y_val == "") || !(!isNaN(parseFloat(y_val)) && isFinite(y_val)) || (y_val > 5) || (y_val < -3));
-    var r_valid = !isNaN(parseFloat(r_val));
-    if (y_valid && r_valid) {
+    var x_valid = !isNaN(parseFloat(x_val));
+    if (y_valid && x_valid) {
         document.getElementById("ok").disabled = false;
         document.getElementById("textY").style.borderColor = "";
-        document.getElementById("rad").style.borderStyle = "";
-        document.getElementById("rad").style.borderWidth = "";
-        document.getElementById("rad").style.borderColor = "";
+        document.getElementById("xSel").style.borderStyle = "";
+        document.getElementById("xSel").style.borderWidth = "";
+        document.getElementById("xSel").style.borderColor = "";
     } else {
         document.getElementById("ok").disabled = true;
         if (!y_valid) {
             document.getElementById("textY").style.borderColor = "red";
         }
-        if (!r_valid) {
-            document.getElementById("rad").style.borderStyle = "solid";
-            document.getElementById("rad").style.borderWidth = "1px";
-            document.getElementById("rad").style.borderColor = "red";
+        if (!x_valid) {
+            document.getElementById("xSel").style.borderStyle = "solid";
+            document.getElementById("xSel").style.borderWidth = "1px";
+            document.getElementById("xSel").style.borderColor = "red";
         }
     }
 }
 
-function rSelected(btn) {
-    document.getElementById("hiddenR").value = btn.value;
-    var elems = document.getElementsByClassName("radBtn");
+function xSelected(btn) {
+    document.getElementById("hiddenX").value = btn.value;
+    var elems = document.getElementsByClassName("xBtn");
     for (var i = 0; i < elems.length; i++) {
         elems[i].style.backgroundColor = "";
     }
@@ -49,7 +49,7 @@ $(document).ready(function () {
             y = 100 - y;
         else
             y = -y + 100;
-        var rad = parseFloat(document.getElementById("hiddenR").value);
+        var rad = parseFloat(document.getElementById("hiddenX").value);
 
         if (!isNaN(rad)) {
             var k = rad * 1.25;
@@ -60,6 +60,6 @@ $(document).ready(function () {
             alert("Set R first!");
             return;
         }
-        window.location = "../Lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
+        window.location = "../lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
     }
 });

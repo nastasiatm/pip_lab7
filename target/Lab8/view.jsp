@@ -53,7 +53,63 @@
 </head>
 <body>
 <script>
-    <%@include file="scripts.js"%>
+    function validateForm() {
+        var y_val = document.getElementById("textY").value;
+        y_val = y_val.replace(",", ".");
+        var x_val = document.getElementById("hiddenX").value;
+        var y_valid = !((y_val == "") || !(!isNaN(parseFloat(y_val)) && isFinite(y_val)) || (y_val > 5) || (y_val < -3));
+        var x_valid = !isNaN(parseFloat(x_val));
+        if (y_valid && x_valid) {
+            document.getElementById("ok").disabled = false;
+            document.getElementById("textY").style.borderColor = "";
+            document.getElementById("xSel").style.borderStyle = "";
+            document.getElementById("xSel").style.borderWidth = "";
+            document.getElementById("xSel").style.borderColor = "";
+        } else {
+            document.getElementById("ok").disabled = true;
+            if (!y_valid) {
+                document.getElementById("textY").style.borderColor = "#B83129";
+            }
+            if (!x_valid) {
+                document.getElementById("xSel").style.borderStyle = "solid";
+                document.getElementById("xSel").style.borderWidth = "1px";
+                document.getElementById("xSel").style.borderColor = "#B83129";
+            }
+        }
+    }
+
+    function xSelected(btn) {
+        document.getElementById("hiddenX").value = btn.value;
+        var elems = document.getElementsByClassName("xBtn");
+        for (var i = 0; i < elems.length; i++) {
+            elems[i].style.backgroundColor = "";
+        }
+        btn.style.backgroundColor = "#4CAF50";
+        validateForm();
+    }
+
+    $(document).ready(function () {
+        document.getElementById("graph").onclick = function (e) {
+            var x = e.offsetX == undefined ? e.layerX : e.offsetX - 100;
+            var y = e.offsetY == undefined ? e.layerY : e.offsetY;
+            if (y <= 100)
+                y = 100 - y;
+            else
+                y = -y + 100;
+            var rad = parseFloat(document.getElementById("rad").value);
+
+            if (!isNaN(rad)) {
+                var k = rad * 1.25;
+                var l = document.img.width / 2;
+                y = y * k / l;
+                x = x * k / l;
+            } else {
+                alert("Set R first!");
+                return;
+            }
+            window.location = "../lab8/main?XSelector=" + x + "&YSelector=" + y + "&RSelector=" + rad;
+        }
+    });
 </script>
 <div class="wrapper">
     <header id="head" align="center" style="border-radius: 65px 0px" class="radius">
@@ -69,27 +125,28 @@
         </strong></p>
         <div class="inputs">
             <form method="GET" action="/Lab8/main">
-            <p id="rad">Select X:
-                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="1">1</button>
-                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="2">2</button>
-                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="3">3</button>
-                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="4">4</button>
-                    <button type="button" name="XSelector" class="chb" onclick="xSelected(this)" value="5">5</button>
+            <p id="xSel">Select X:
+                <button type="button" name="XSelector" class="xBtn" onclick="xSelected(this)" value="1">1</button>
+                <button type="button" name="XSelector" class="xBtn" onclick="xSelected(this)" value="2">2</button>
+                <button type="button" name="XSelector" class="xBtn" onclick="xSelected(this)" value="3">3</button>
+                <button type="button" name="XSelector" class="xBtn" onclick="xSelected(this)" value="4">4</button>
+                <button type="button" name="XSelector" class="xBtn" onclick="xSelected(this)" value="5">5</button>
             </p>
             <p>Y value {-5..5}:
-                    <input type="text" id="textY" name="Y" placeholder="-5..5" onchange="validateForm()" onkeydown="javascript:if(13==event.keyCode){return false;}" required>
+                            <input type="text" id="textY" name="YSelector" placeholder="-5..5" onchange="validateForm()"
+                                onkeydown="javascript:if(13==event.keyCode){return false;}" required>
             </p>
-                <p id="rad">Select R:
-                    <select size="5" submit>
-                        <option value="1" name="RSelector" class="radBtn">1</option>
-                        <option value="1.5" name="RSelector" class="radBtn">1.5</option>
-                        <option value="2" name="RSelector" class="radBtn">2</option>
-                        <option value="2.5" name="RSelector" class="radBtn">2.5</option>
-                        <option value="3" name="RSelector" class="radBtn">3</option>
-                    </select>
-                </p>
-                <input type="hidden" id="hiddenR" name="RSelector"></input>
-                <button type="submit" id="ok" disabled="true">OK</button>
+            <p>Select R:
+                <select size="3">
+                    <option value="1" name="RSelector" id="rad" class="radSel" selected>1</option>
+                    <option value="1.5" name="RSelector" id="rad" class="radSel">1.5</option>
+                    <option value="2" name="RSelector" id="rad" class="radSel">2</option>
+                    <option value="2.5" name="RSelector" id="rad" class="radSel">2.5</option>
+                    <option value="3" name="RSelector" id="rad" class="radSel">3</option>
+                </select>
+            </p>
+            <input type="hidden" id="hiddenX" name="XSelector"></input>
+            <button type="submit" id="ok" disabled="true">Ok!</button>
             </form>
         </div>
         <div class="area">
